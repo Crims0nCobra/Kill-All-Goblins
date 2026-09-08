@@ -41,9 +41,9 @@ int main () {
     string BATTLE_OPTIONS_SECRET[4] = {
         "(1)ATTACK",
         "(2)DEFEND",
-        "(3)ITEM(BROKEN RIGHT NOW DO NOT USE)"
+        "(3)ITEM(UNDER CONSTRUCTION DO NOT USE)"
         "(4)Lawsuit from Nintendo"
-    }
+    };
 
     string greeting = "Enter your name, Hero:";
     cout << greeting << endl;
@@ -53,9 +53,9 @@ int main () {
 
     cout << "Welcome, " << name << "." << endl;
 
-    bool Nintendos_Lawyers
+    bool Nintendos_Lawyers;
 
-    if(name == "Nintendo", "Lawyer") {
+    if(name == "Nintendo" || name == "Lawyer") {
         Nintendos_Lawyers = true;
     };
 
@@ -68,6 +68,7 @@ int main () {
     string act;
 
     int player_health = 100;
+    int goblin_health = 70;
 
     cout << "A goblin appears! what will you do?" << endl;
     cout << "OPTIONS:" << endl;
@@ -80,56 +81,70 @@ int main () {
             cout << BATTLE_OPTIONS_1[i] << " ";
         }
     };
-    cin >> opt;
 
-    if(opt == "1") {
-        resp = "ATTK";
-        act = 1;
-    }
-    else if(opt == "2") {
-        resp = "DEF";
-        act = 2;
-    }
-    else if(opt == "3") {
-        resp = "ITEM";
-        act = 3;
-    }
-    else if(opt == "4") {
-        resp = "Lawsuit from Nintendo";
-        act = 4;
-    };
+    while(goblin_health =>1 && player_health =>1) {
 
-    cout << resp << endl;
+        cin >> opt;
 
-    cin >> act;
-
-    int goblin_health = 70;
-    string goblin {
-        if(act == 1) {
-            goblin_health -= 10;
-            "You attacked the goblin for 10 damage, stunning him and skipping his turn!"
+        if(opt == "1") {
+            resp = "ATTK";
+            act = 1;
         }
-        else if(act == 2) {
-             cout << "The goblin atatcks, but you block it's attack with your shield, taking no damage!" << endl;
+        else if(opt == "2") {
+            resp = "DEF";
+            act = 2;
         }
-        else if(act == 3) {    
-            cout >> "I told you this doesn't work right now, but you didnt listen, did you?"
-            player_health -= 100;
-            cout >> "You Died(curiosity killed the cat and all that)"
+        else if(opt == "3") {
+            resp = "ITEM";
+            act = 3;
         }
-        else if(act == 4) {
-            cout << "you took the goblin to court, suing it for infringing upon the company's intellectual property." << endl;
-            cout << "The goblin's punishment..." << endl;
-            cout << "IS DEATH!!!" << endl;
-            cout << "FINISH HIM!!!" << endl << endl;
-            cin >> opt;
-            if(opt == "1") {
-                goblin_health -= 70;
-                cout >> "F A T A L I T Y"
+        else if(opt == "4") {
+            resp = "Lawsuit from Nintendo";
+            act = 4;
+        };
+
+        cout << resp << endl;
+
+        cin >> act;
+
+
+        string goblin {
+            if(act == 1) {
+                goblin_health -= 10;
+                cout << "You attacked the goblin for 10 damage, stunning him and skipping his turn!" << endl;
             }
+            else if(act == 2) {
+                    cout << "The goblin atatcks, but you block it's attack with your shield, taking no damage!" << endl;
+            }
+            else if(act == 3) {    
+                cout << "I told you this doesn't work right now, but you didnt listen, did you?"
+                player_health -= 100;
+                cout << "You Died(curiosity killed the cat and all that)"
+            }
+            else if(act == 4) {
+                cout << "You took the goblin to court, suing it for infringing upon the company's intellectual property." << endl;
+                cout << "The goblin's punishment..." << endl;
+                cout << "IS DEATH!!!" << endl;
+                cout << "FINISH HIM!!!" << endl << endl;
+                cin >> opt;
+                if(opt == "1") {
+                    goblin_health -= 70;
+                    cout << "F A T A L I T Y"
+                }
 
-        }
-    };
+            }
+        };
+    }
+
+    if (player_health <= 0) {
+        cout << "You died, loser." << endl;
+    }
+
+    if (goblin_health <= 0) {
+        cout << "Congrats, you beat the game!" << endl;
+        cout << "Thanks for QA testing my shitty little text rpg for free!" << endl;
+        cout << "More updates to come in the future! Stay tuned." << endl;
+    }
 
 
 };
