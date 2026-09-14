@@ -410,7 +410,7 @@ int main () {
                                         gob_dmg_dealt += 15;
                                         player_health -= 15;
 
-                                        "\033[34m<Press ENTER to continue...>\033[0m\n";
+                                        cout << "\033[34m<Press ENTER to continue...>\033[0m\n";
                                         cin.get();
                                     }
                                     else if (confirm == "N") {
