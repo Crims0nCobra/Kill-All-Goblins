@@ -249,19 +249,20 @@ int main () {
             cin.get();
         }
         //inventory
-        else if(act == "3") {    
+        else if(act == "3") {
             cout << "-- INVENTORY : --" << endl;
-              if (has_crypto==true) {
-                 int size2 = sizeof(inventory_2) / sizeof(inventory_2[0]);
-                    for (int i = 0; i < size2; i++) {
-                        cout << inventory_2[i] << "";
-                    }
-              }
-              else {
+            if (Has_Crypto == true) {
+                int size2 = sizeof(inventory_2) / sizeof(inventory_2[0]);
+                for (int i = 0; i < size2; i++) {
+                    cout << inventory_2[i] << "";
+                }
+            }
+            else {
                 int size2 = sizeof(inventory) / sizeof(inventory[0]);
-                    for (int i = 0; i < size2; i++) {
-                        cout << inventory[i] << "";
-              }
+                for (int i = 0; i < size2; i++) {
+                    cout << inventory[i] << "";
+                }
+            }
                     cout << "\n";
             cin >> opt;
                 if(opt == "1") {
