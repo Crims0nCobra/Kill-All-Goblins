@@ -41,6 +41,15 @@ int main () {
         "(\033[33m6\033[0m)???\n"
         "\n"
     };
+    string inventory_2[6] = {
+      "(\033[33m1\033[0m)healing_potion\n"
+      "(\033[33m2\033[0m)fireball_scroll\n"
+      "(\033[33m3\033[0m)smoke_bomb\n"
+      "(\033[33m4\033[0m)glock\n"
+      "(\033[33m5\033[0m)???\n"
+      "(\033[33m6\033[0m)cash_out\n"
+      "\n"
+    };
 
     string BATTLE_OPTIONS_1[5] = {
         "(\033[33m1\033[0m)ATTACK\n"
@@ -74,7 +83,7 @@ int main () {
         "(\033[33m2\033[0m)DEFEND\n"
         "(\033[33m3\033[0m)ITEM\n"
         "(\033[33m4\033[0m)???LOCKED???\n"
-        "(\033[33m5\033[0m)???LOCKED???\n"
+        "(\033[33m5\033[0m)???UNLOCKED???\n"
         "\n"
     };
    
@@ -196,6 +205,7 @@ int main () {
         }
         else if(opt == "4" && Nintendos_Lawyers == false) {
             resp = "\n\\\\LOCKED. FIND THE KEY.\\\\ \n";
+            cout << "HINT : https://en-americas-support.nintendo.com/app/answers/detail/a_id/50035/~/intellectual-property-policy\n";
             this_thread::sleep_for(chrono::seconds(1));
             act = "4";
         }
@@ -204,10 +214,10 @@ int main () {
             this_thread::sleep_for(chrono::seconds(1));
             act = "5";
         }
-        else if(opt == "4" && Has_Crypto == false) {
+        else if(opt == "5" && Has_Crypto == false) {
             resp = "\n\\\\LOCKED. FIND THE KEY.\\\\ \n";
-            cout << "HINT : https://en-americas-support.nintendo.com/app/answers/detail/a_id/50035/~/intellectual-property-policy\n";
-            this_thread::sleep_for(chrono::seconds(1));
+            cout << "HINT : Check your inventory."
+;            this_thread::sleep_for(chrono::seconds(1));
             act = "5";
         };
         cout << resp << endl;
@@ -241,10 +251,17 @@ int main () {
         //inventory
         else if(act == "3") {    
             cout << "-- INVENTORY : --" << endl;
-                 int size2 = sizeof(inventory) / sizeof(inventory[0]);
+              if (has_crypto==true) {
+                 int size2 = sizeof(inventory_2) / sizeof(inventory_2[0]);
+                    for (int i = 0; i < size2; i++) {
+                        cout << inventory_2[i] << "";
+                    }
+              }
+              else {
+                int size2 = sizeof(inventory) / sizeof(inventory[0]);
                     for (int i = 0; i < size2; i++) {
                         cout << inventory[i] << "";
-                    };
+              }
                     cout << "\n";
             cin >> opt;
                 if(opt == "1") {
@@ -590,7 +607,7 @@ int main () {
                             cout << "Type \033[33mS\033[0m to see : \033[33m";
                             string see_press = "S";
                             cin >> see_press;
-                            cout << "\033[0mYou see it now, you see everything, It's all... so clear.\n";
+                            cout << "\n\033[0mYou see it now, you see everything, It's all... so clear.\n";
                             std::this_thread::sleep_for(std::chrono::seconds(2));
                             cout << "Oh.\n";
                             std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -782,7 +799,7 @@ int main () {
     if (player_health <= 0) {
         cin.ignore();
         cout << "You died, loser." << endl;
-        cout << "Lwk genuinely I'm honestly impressed you managed to die at all. The goblin barely fights back, like were you trying to die? smh.";
+        cout << "Lwk genuinely I'm honestly impressed you managed to die at all. The goblin barely fights back, like were you trying to die? smh.\n";
         cout << "\033[34m<Press ENTER to continue...>\033[0m\n";
         cin.get();
     }
@@ -800,11 +817,11 @@ int main () {
         cin.get();
         cout << "Thanks for playing my video game. It's not much, but I spent more hours than I'd like to admit working on this(which was originally meant to just be a quick, simple, and pretty basic proof-of-concept)." << endl;
         this_thread::sleep_for(chrono::seconds(3));
-        cout << "More updates may or may not to come at some point in the future. Depends on how I feel and whether I'm working on something else or not." << endl;
+        cout << "More updates may or may not come at some point in the future. Depends on how I feel and whether I'm working on something else or not." << endl;
         std::this_thread::sleep_for(std::chrono::seconds(2));
-        cout << "But if you enjoyed this then I'd reccomend you stay tuned since I'll probably be doing similar projects in the near future.";
+        cout << "But if you enjoyed this then I'd reccomend you stay tuned since I'll probably be doing similar projects in the near future.\n";
         this_thread::sleep_for(chrono::seconds(3));
-        cout << "Disclaimer: many goblins were harmed in the making of this." << endl;
+        cout << "Disclaimer: many goblins were harmed in the making of this.\n" << endl;
         this_thread::sleep_for(chrono::seconds(1));
         cout << "\033[34m<Press ENTER to continue...>\033[0m\n";
         cin.get();
